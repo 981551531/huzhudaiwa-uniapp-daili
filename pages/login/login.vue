@@ -1,22 +1,25 @@
-﻿<template>
+<template>
   <view class="login-page">
+    <!-- 顶部区域 -->
     <view class="login-header">
       <view class="login-logo">
-        <u-icon name="home" size="80" color="#2979ff" />
+        <u-icon name="home" size="80" color="#1890FF" />
       </view>
-      <text class="login-title">欢迎登录</text>
-      <text class="login-subtitle">uni-app Vue3 基础模板</text>
+      <text class="login-title">代理商管理系统</text>
+      <text class="login-subtitle">互助带娃平台</text>
     </view>
 
+    <!-- 中部表单区 -->
     <view class="login-form">
       <u-form ref="formRef" :model="formData" :rules="rules" labelWidth="0">
-        <u-form-item prop="username">
+        <u-form-item prop="account">
           <u-input
-            v-model="formData.username"
-            placeholder="请输入用户名"
+            v-model="formData.account"
+            placeholder="请输入手机号或用户名"
             prefixIcon="account"
-            prefixIconStyle="font-size: 44rpx; color: #909399"
+            prefixIconStyle="font-size: 44rpx; color: #8C8C8C"
             clearable
+            :customStyle="inputStyle"
           />
         </u-form-item>
 
@@ -26,95 +29,98 @@
             placeholder="请输入密码"
             :password="!showPassword"
             prefixIcon="lock"
-            prefixIconStyle="font-size: 44rpx; color: #909399"
+            prefixIconStyle="font-size: 44rpx; color: #8C8C8C"
+            :customStyle="inputStyle"
           >
             <template #suffix>
               <u-icon
                 :name="showPassword ? 'eye-fill' : 'eye-off'"
                 size="40"
-                color="#909399"
+                color="#8C8C8C"
                 @click="showPassword = !showPassword"
               />
             </template>
           </u-input>
         </u-form-item>
 
-        <view class="form-extra">
-          <u-checkbox-group v-model="rememberMe">
-            <u-checkbox label="记住账号" name="remember" shape="circle" activeColor="#2979ff" />
-          </u-checkbox-group>
-          <text class="forget-link" @click="handleForget">忘记密码？</text>
-        </view>
-
+        <!-- 底部操作区 -->
         <u-button
           type="primary"
           text="登录"
           :loading="loading"
-          :disabled="loading"
+          :disabled="!canLogin || loading"
           @click="handleLogin"
-          customStyle="margin-top: 40rpx; height: 88rpx; border-radius: 44rpx;"
+          :customStyle="loginBtnStyle"
         />
-      </u-form>
 
-      <view class="other-login">
-        <view class="divider-text">
-          <view class="divider-line" />
-          <text class="divider-label">其他登录方式</text>
-          <view class="divider-line" />
+        <view class="forget-tip">
+          <text class="forget-text">忘记密码请联系平台管理员</text>
         </view>
-        <view class="social-icons">
-          <view class="social-item" @click="handleWechatLogin">
-            <u-icon name="weixin-fill" size="48" color="#07c160" />
-          </view>
-        </view>
-      </view>
+      </u-form>
     </view>
 
+    <!-- 底部版权信息 -->
     <view class="login-footer">
-      <text class="footer-text">登录即表示同意</text>
-      <text class="footer-link">《用户协议》</text>
-      <text class="footer-text">和</text>
-      <text class="footer-link">《隐私政策》</text>
+      <text class="footer-text">互助带娃平台 - 代理商专用</text>
     </view>
   </view>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
-import { useUserStore } from '@/store'
-import { PAGES } from '@/config/constants.js'
 
-const userStore = useUserStore()
-
+// 表单引用
 const formRef = ref(null)
 const loading = ref(false)
 const showPassword = ref(false)
-const rememberMe = ref([])
-const redirectUrl = ref('')
 
+// 表单数据
 const formData = reactive({
-  username: '',
-  password: ''
+  account: 'agent_beijing',
+  password: '123456'
 })
 
+// 表单校验规则
 const rules = reactive({
-  username: [{ required: true, message: '请输入用户名', trigger: ['blur', 'change'] }],
+  account: [{ required: true, message: '请输入手机号或用户名', trigger: ['blur', 'change'] }],
   password: [
     { required: true, message: '请输入密码', trigger: ['blur', 'change'] },
-    { min: 6, message: '密码不少于 6 位', trigger: ['blur'] }
+    { min: 6, message: '密码不少于6位', trigger: ['blur'] }
   ]
 })
 
-onLoad((options) => {
-  redirectUrl.value = options?.redirect ? decodeURIComponent(options.redirect) : ''
+// 输入框样式
+const inputStyle = {
+  backgroundColor: '#F5F5F5',
+  borderRadius: '8rpx',
+  padding: '24rpx'
+}
+
+// 登录按钮样式
+const loginBtnStyle = computed(() => ({
+  marginTop: '60rpx',
+  height: '96rpx',
+  borderRadius: '12rpx',
+  backgroundColor: canLogin.value ? '#1890FF' : '#91caff',
+  border: 'none'
+}))
+
+// 是否可以登录
+const canLogin = computed(() => {
+  return formData.account.trim() !== '' && formData.password.trim() !== ''
 })
 
+// 页面加载
+onLoad(() => {
+  // 检查是否已登录
+})
+
+// 表单校验
 async function validateForm() {
   if (!formRef.value?.validate) {
     return true
   }
-
   try {
     await formRef.value.validate()
     return true
@@ -123,60 +129,53 @@ async function validateForm() {
   }
 }
 
-function goAfterLogin() {
-  if (redirectUrl.value && redirectUrl.value !== PAGES.HOME) {
-    uni.redirectTo({ url: redirectUrl.value })
-    return
-  }
-
-  uni.switchTab({ url: PAGES.HOME })
-}
-
+// 登录处理
 async function handleLogin() {
   const valid = await validateForm()
-  if (!valid) {
-    return
-  }
+  if (!valid) return
 
   loading.value = true
-  try {
-    await userStore.login({ ...formData })
-    uni.showToast({ title: '登录成功', icon: 'success' })
-    setTimeout(() => {
-      goAfterLogin()
-    }, 300)
-  } catch (error) {
-    uni.showToast({ title: error.message || '登录失败', icon: 'none' })
-  } finally {
+  
+  // 模拟登录请求
+  setTimeout(() => {
     loading.value = false
-  }
-}
-
-function handleForget() {
-  uni.showToast({ title: '忘记密码功能待实现', icon: 'none' })
-}
-
-function handleWechatLogin() {
-  // #ifdef MP-WEIXIN
-  uni.showToast({ title: '请使用页面内微信授权流程', icon: 'none' })
-  // #endif
-  // #ifndef MP-WEIXIN
-  uni.showToast({ title: '仅微信环境支持', icon: 'none' })
-  // #endif
+    
+    // 模拟登录成功，缓存代理商信息
+    const agentInfo = {
+      id: 1,
+      name: '北京市朝阳区代理',
+      contactName: '张经理',
+      contactPhone: '138****8888',
+      regionName: '北京市朝阳区',
+      token: 'mock_token_123456'
+    }
+    
+    uni.setStorageSync('agentInfo', agentInfo)
+    uni.setStorageSync('token', agentInfo.token)
+    
+    uni.showToast({ 
+      title: '登录成功', 
+      icon: 'success' 
+    })
+    
+    setTimeout(() => {
+      uni.switchTab({ url: '/pages/index/index' })
+    }, 300)
+  }, 1500)
 }
 </script>
 
 <style lang="scss" scoped>
 .login-page {
   min-height: 100vh;
-  background-color: $bg-white;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   padding: 0 60rpx;
 }
 
 .login-header {
-  padding-top: 200rpx;
+  padding-top: 180rpx;
   padding-bottom: 80rpx;
   display: flex;
   flex-direction: column;
@@ -186,7 +185,7 @@ function handleWechatLogin() {
     width: 140rpx;
     height: 140rpx;
     border-radius: 28rpx;
-    background: linear-gradient(135deg, #e8f0fe, #d4e4fd);
+    background: linear-gradient(135deg, #e6f4ff, #bae0ff);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,13 +195,13 @@ function handleWechatLogin() {
   .login-title {
     font-size: 48rpx;
     font-weight: bold;
-    color: $text-primary;
+    color: #262626;
     margin-bottom: 12rpx;
   }
 
   .login-subtitle {
     font-size: 26rpx;
-    color: $text-secondary;
+    color: #8C8C8C;
   }
 }
 
@@ -210,53 +209,14 @@ function handleWechatLogin() {
   flex: 1;
 }
 
-.form-extra {
+.forget-tip {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 16rpx;
+  justify-content: center;
+  margin-top: 32rpx;
 
-  .forget-link {
-    font-size: 26rpx;
-    color: $primary;
-  }
-}
-
-.other-login {
-  margin-top: 80rpx;
-
-  .divider-text {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40rpx;
-
-    .divider-line {
-      flex: 1;
-      height: 1rpx;
-      background-color: $border-light;
-    }
-
-    .divider-label {
-      padding: 0 24rpx;
-      font-size: 24rpx;
-      color: $text-placeholder;
-    }
-  }
-
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 60rpx;
-
-    .social-item {
-      width: 88rpx;
-      height: 88rpx;
-      border-radius: 50%;
-      background-color: $bg-page;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  .forget-text {
+    font-size: 24rpx;
+    color: #8C8C8C;
   }
 }
 
@@ -264,17 +224,12 @@ function handleWechatLogin() {
   padding: 40rpx 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  padding-bottom: calc(40rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
 
   .footer-text {
     font-size: 22rpx;
-    color: $text-placeholder;
-  }
-
-  .footer-link {
-    font-size: 22rpx;
-    color: $primary;
+    color: #BFBFBF;
   }
 }
 </style>

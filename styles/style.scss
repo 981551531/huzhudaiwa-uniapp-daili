@@ -1,0 +1,459 @@
+/**
+ * 互助带娃系统 - 代理端配色方案
+ * 基于《互助带娃系统 - 视觉风格与配色方案设计》V1.0
+ */
+
+// ==================== 主色调 ====================
+// 科技蓝 - 用于全局主按钮、TabBar选中状态、数据看板核心指标、选中边框
+$color-primary: #1890FF;
+$color-primary-light: #40a9ff;
+$color-primary-dark: #096dd9;
+$color-primary-disabled: #91caff;
+
+// ==================== 功能色/状态色 ====================
+// 成功绿 - 审核通过、已上架、订单已完成、数据增长趋势
+$color-success: #52C41A;
+$color-success-light: #73d13d;
+$color-success-bg: #f6ffed;
+
+// 警告黄 - 待审核、待处理订单、库存预警、数据下降趋势
+$color-warning: #FAAD14;
+$color-warning-light: #ffc53d;
+$color-warning-bg: #fffbe6;
+
+// 危险红 - 审核驳回、已下架、删除/禁用操作、错误提示
+$color-danger: #F5222D;
+$color-danger-light: #ff4d4f;
+$color-danger-bg: #fff1f0;
+
+// 信息色
+$color-info: #909399;
+$color-info-light: #b4b8bf;
+
+// ==================== 背景色 ====================
+// 商务灰 - 全局页面背景色
+$color-bg-page: #F0F2F5;
+$color-bg-white: #FFFFFF;
+$color-bg-light: #FAFAFA;
+$color-bg-gray: #F5F5F5;
+$color-bg-mask: rgba(0, 0, 0, 0.45);
+
+// ==================== 边框色 ====================
+// 浅边框 - 表格边框、表单输入框边框、分割线
+$color-border: #E8E8E8;
+$color-border-light: #F0F0F0;
+$color-border-dark: #D9D9D9;
+
+// ==================== 文字颜色 ====================
+// 主标题/数据 - 极深灰
+$color-text-title: #262626;
+// 正文/表单 - 深灰
+$color-text-primary: #595959;
+// 辅助说明 - 中灰
+$color-text-secondary: #8C8C8C;
+// 占位符/禁用
+$color-text-placeholder: #BFBFBF;
+$color-text-disabled: #C0C4CC;
+// 白色文字
+$color-text-white: #FFFFFF;
+
+// ==================== 字体大小 ====================
+// 主标题/数据
+$font-size-title: 32rpx;
+$font-size-data: 48rpx;
+// 正文/表单
+$font-size-base: 28rpx;
+// 辅助说明
+$font-size-small: 24rpx;
+$font-size-mini: 20rpx;
+
+// ==================== 间距 ====================
+$spacing-xs: 8rpx;
+$spacing-sm: 16rpx;
+$spacing-base: 24rpx;
+$spacing-md: 32rpx;
+$spacing-lg: 40rpx;
+$spacing-xl: 48rpx;
+
+// ==================== 圆角 ====================
+// 卡片、按钮统一采用 8rpx - 12rpx 的小圆角
+$radius-sm: 8rpx;
+$radius-base: 12rpx;
+$radius-md: 16rpx;
+$radius-lg: 24rpx;
+$radius-round: 999rpx;
+
+// ==================== 阴影 ====================
+$shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+$shadow-base: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+$shadow-md: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+
+// ==================== 工具类 ====================
+
+// 主色调相关
+.text-primary {
+  color: $color-primary !important;
+}
+
+.bg-primary {
+  background-color: $color-primary !important;
+}
+
+.border-primary {
+  border-color: $color-primary !important;
+}
+
+// 状态色相关
+.text-success {
+  color: $color-success !important;
+}
+
+.bg-success {
+  background-color: $color-success-bg !important;
+}
+
+.text-warning {
+  color: $color-warning !important;
+}
+
+.bg-warning {
+  background-color: $color-warning-bg !important;
+}
+
+.text-danger {
+  color: $color-danger !important;
+}
+
+.bg-danger {
+  background-color: $color-danger-bg !important;
+}
+
+// 文字颜色
+.text-title {
+  color: $color-text-title !important;
+}
+
+.text-content {
+  color: $color-text-primary !important;
+}
+
+.text-secondary {
+  color: $color-text-secondary !important;
+}
+
+.text-placeholder {
+  color: $color-text-placeholder !important;
+}
+
+.text-white {
+  color: $color-text-white !important;
+}
+
+// 背景色
+.bg-page {
+  background-color: $color-bg-page !important;
+}
+
+.bg-white {
+  background-color: $color-bg-white !important;
+}
+
+.bg-light {
+  background-color: $color-bg-light !important;
+}
+
+// 通用卡片样式
+.agent-card {
+  background-color: $color-bg-white;
+  border-radius: $radius-base;
+  padding: $spacing-base;
+  margin-bottom: $spacing-base;
+  box-shadow: $shadow-sm;
+}
+
+// 数据卡片样式
+.data-card {
+  background-color: $color-bg-white;
+  border-radius: $radius-base;
+  padding: $spacing-md;
+  text-align: center;
+  
+  .data-value {
+    font-size: $font-size-data;
+    font-weight: bold;
+    color: $color-text-title;
+    line-height: 1.2;
+  }
+  
+  .data-label {
+    font-size: $font-size-small;
+    color: $color-text-secondary;
+    margin-top: $spacing-xs;
+  }
+  
+  .data-trend {
+    font-size: $font-size-mini;
+    margin-top: $spacing-xs;
+    
+    &.up {
+      color: $color-success;
+    }
+    
+    &.down {
+      color: $color-warning;
+    }
+  }
+}
+
+// 状态标签样式
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4rpx 16rpx;
+  border-radius: $radius-sm;
+  font-size: $font-size-small;
+  
+  &.status-online {
+    background-color: $color-success-bg;
+    color: $color-success;
+  }
+  
+  &.status-offline {
+    background-color: $color-danger-bg;
+    color: $color-danger;
+  }
+  
+  &.status-pending {
+    background-color: $color-warning-bg;
+    color: $color-warning;
+  }
+  
+  &.status-rejected {
+    background-color: $color-danger-bg;
+    color: $color-danger;
+  }
+}
+
+// 快捷功能区/金刚区样式
+.quick-entry {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $color-bg-white;
+  border-radius: $radius-base;
+  padding: $spacing-md $spacing-sm;
+  
+  .quick-item {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $spacing-sm 0;
+    
+    .quick-icon {
+      width: 88rpx;
+      height: 88rpx;
+      border-radius: $radius-md;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: $spacing-xs;
+      
+      &.icon-blue {
+        background-color: rgba(24, 144, 255, 0.1);
+        color: $color-primary;
+      }
+      
+      &.icon-green {
+        background-color: rgba(82, 196, 26, 0.1);
+        color: $color-success;
+      }
+      
+      &.icon-orange {
+        background-color: rgba(250, 173, 20, 0.1);
+        color: $color-warning;
+      }
+      
+      &.icon-red {
+        background-color: rgba(245, 34, 45, 0.1);
+        color: $color-danger;
+      }
+    }
+    
+    .quick-text {
+      font-size: $font-size-small;
+      color: $color-text-primary;
+    }
+  }
+}
+
+// 表单容器
+.form-container {
+  background-color: $color-bg-white;
+  border-radius: $radius-base;
+  padding: $spacing-base;
+  
+  .form-title {
+    font-size: $font-size-title;
+    font-weight: bold;
+    color: $color-text-title;
+    margin-bottom: $spacing-md;
+  }
+}
+
+// 列表项样式
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: $spacing-base;
+  background-color: $color-bg-white;
+  border-bottom: 1rpx solid $color-border-light;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &:active {
+    background-color: $color-bg-light;
+  }
+}
+
+// 底部悬浮操作栏
+.bottom-action-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: $spacing-base;
+  padding-bottom: calc(#{$spacing-base} + constant(safe-area-inset-bottom));
+  padding-bottom: calc(#{$spacing-base} + env(safe-area-inset-bottom));
+  background-color: $color-bg-white;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+  
+  .action-btn {
+    flex: 1;
+    margin: 0 $spacing-sm;
+    
+    &:first-child {
+      margin-left: 0;
+    }
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// 页面容器
+.agent-page {
+  min-height: 100vh;
+  background-color: $color-bg-page;
+}
+
+// 页面内容区域（带底部操作栏时使用）
+.page-content-with-bottom {
+  padding-bottom: calc(120rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+}
+
+// 搜索栏容器
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  padding: $spacing-sm $spacing-base;
+  background-color: $color-bg-white;
+  
+  .search-input {
+    flex: 1;
+  }
+  
+  .search-btn {
+    margin-left: $spacing-sm;
+  }
+}
+
+// Tab栏样式
+.tab-bar {
+  display: flex;
+  background-color: $color-bg-white;
+  border-bottom: 1rpx solid $color-border-light;
+  
+  .tab-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 88rpx;
+    font-size: $font-size-base;
+    color: $color-text-secondary;
+    position: relative;
+    
+    &.active {
+      color: $color-primary;
+      font-weight: 500;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 48rpx;
+        height: 4rpx;
+        background-color: $color-primary;
+        border-radius: 2rpx;
+      }
+    }
+  }
+}
+
+// 空状态容器
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx $spacing-base;
+  
+  .empty-text {
+    font-size: $font-size-base;
+    color: $color-text-secondary;
+    margin-top: $spacing-md;
+  }
+}
+
+// 徽章样式
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32rpx;
+  height: 32rpx;
+  padding: 0 8rpx;
+  font-size: $font-size-mini;
+  color: $color-text-white;
+  background-color: $color-danger;
+  border-radius: $radius-round;
+}
+
+// 分割线
+.divider {
+  height: 1rpx;
+  background-color: $color-border-light;
+  margin: $spacing-base 0;
+}
+
+// 价格样式
+.price {
+  color: $color-danger;
+  font-weight: bold;
+  
+  .price-symbol {
+    font-size: $font-size-small;
+  }
+  
+  .price-value {
+    font-size: $font-size-title;
+  }
+}

@@ -36,6 +36,8 @@ export default {
 @import "@/uni_modules/uview-plus/index.scss";
 /* 公共样式 */
 @import "@/styles/common.scss";
+/* 代理端配色方案 */
+@import "@/styles/style.scss";
 
 /* 全局基础样式 */
 page {

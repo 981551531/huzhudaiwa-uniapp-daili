@@ -1,0 +1,94 @@
+﻿{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^u--(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
+      "^up-(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
+      "^u-([^-].*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/demo/request-demo/request-demo",
+      "style": {
+        "navigationBarTitleText": "请求示例"
+      }
+    },
+    {
+      "path": "pages/demo/store-demo/store-demo",
+      "style": {
+        "navigationBarTitleText": "状态管理示例"
+      }
+    },
+    {
+      "path": "pages/demo/framework-demo/framework-demo",
+      "style": {
+        "navigationBarTitleText": "框架能力示例"
+      }
+    },
+    {
+      "path": "pages/demo/crud-demo/crud-demo",
+      "style": {
+        "navigationBarTitleText": "增删改查示例"
+      }
+    },
+    {
+      "path": "pages/demo/component-demo/component-demo",
+      "style": {
+        "navigationBarTitleText": "组件示例"
+      }
+    },
+    {
+      "path": "pages/demo/utils-demo/utils-demo",
+      "style": {
+        "navigationBarTitleText": "工具方法示例"
+      }
+    },
+    {
+      "path": "pages/yyy/yyy",
+      "style": {
+        "navigationBarTitleText": "yyy"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f5f6f8",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#909399",
+    "selectedColor": "#2979ff",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/icons/home.png",
+        "selectedIconPath": "static/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/yyy/yyy",
+        "text": "yyy",
+        "iconPath": "static/icons/home.png",
+        "selectedIconPath": "static/icons/home-active.png"
+      }
+    ]
+  }
+}

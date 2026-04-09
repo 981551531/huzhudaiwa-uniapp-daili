@@ -1,0 +1,9 @@
+/* uni.scss - uni-app 全局样式变量文件 */
+/* 注意：此文件只能引入 SCSS 变量和 uview-plus 主题文件 */
+/* 不可引入 uview-plus/index.scss 等样式文件，否则会导致打包体积过大 */
+
+/* uview-plus 主题变量 */
+@import '@/uni_modules/uview-plus/theme.scss';
+
+/* 项目自定义 SCSS 变量 */
+@import '@/styles/variables.scss';

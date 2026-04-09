@@ -1,0 +1,18 @@
+{
+  "name": "uniapp-hbuilderx-template",
+  "version": "1.0.0",
+  "description": "uni-app HBuilderX 开发框架模板，集成 uview-plus、Pinia、请求封装、多环境配置",
+  "main": "main.js",
+  "scripts": {
+    "prepare": "npm install"
+  },
+  "dependencies": {
+    "pinia": "^2.1.7",
+    "dayjs": "^1.11.10",
+    "clipboard": "^2.0.11"
+  },
+  "devDependencies": {
+    "sass": "^1.63.2",
+    "sass-loader": "^10.4.1"
+  }
+}

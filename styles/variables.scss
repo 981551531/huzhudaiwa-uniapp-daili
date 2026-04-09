@@ -1,0 +1,85 @@
+/**
+ * 全局 SCSS 变量
+ * 可在任意 Vue 文件的 <style lang="scss"> 中直接使用
+ */
+
+// ==================== 主色调 ====================
+$primary: #2979ff;
+$primary-light: #5e9bff;
+$primary-dark: #1a5cd6;
+$primary-disabled: #a0c4ff;
+
+// ==================== 功能色 ====================
+$success: #19be6b;
+$success-light: #47d68e;
+$warning: #ff9900;
+$warning-light: #ffb84d;
+$error: #fa3534;
+$error-light: #ff6b6b;
+$info: #909399;
+$info-light: #b4b8bf;
+
+// ==================== 文字颜色 ====================
+$text-primary: #303133;
+$text-regular: #606266;
+$text-secondary: #909399;
+$text-placeholder: #c0c4cc;
+$text-disabled: #c0c4cc;
+
+// ==================== 边框颜色 ====================
+$border-base: #dcdfe6;
+$border-light: #e4e7ed;
+$border-lighter: #ebeef5;
+$border-extra-light: #f2f6fc;
+
+// ==================== 背景颜色 ====================
+$bg-white: #ffffff;
+$bg-page: #f5f6f8;
+$bg-light: #fafafa;
+$bg-gray: #f2f3f5;
+$bg-dark: #1a1a1a;
+$bg-mask: rgba(0, 0, 0, 0.5);
+
+// ==================== 字体大小 ====================
+$font-size-xs: 20rpx;
+$font-size-sm: 24rpx;
+$font-size-base: 28rpx;
+$font-size-md: 30rpx;
+$font-size-lg: 32rpx;
+$font-size-xl: 36rpx;
+$font-size-xxl: 44rpx;
+
+// ==================== 间距 ====================
+$spacing-xs: 8rpx;
+$spacing-sm: 16rpx;
+$spacing-base: 24rpx;
+$spacing-md: 32rpx;
+$spacing-lg: 40rpx;
+$spacing-xl: 48rpx;
+
+// ==================== 圆角 ====================
+$radius-sm: 4rpx;
+$radius-base: 8rpx;
+$radius-md: 12rpx;
+$radius-lg: 16rpx;
+$radius-xl: 24rpx;
+$radius-round: 999rpx;
+
+// ==================== 阴影 ====================
+$shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+$shadow-base: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+$shadow-md: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 12rpx 40rpx rgba(0, 0, 0, 0.12);
+
+// ==================== 动画 ====================
+$transition-fast: 0.15s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// ==================== 层级 ====================
+$z-index-base: 1;
+$z-index-popup: 100;
+$z-index-mask: 200;
+$z-index-modal: 300;
+$z-index-toast: 400;
+$z-index-top: 999;
